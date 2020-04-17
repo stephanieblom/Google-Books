@@ -29,7 +29,7 @@ app.post( '/api/addBook', async ( req, res ) => {
     const bookData = req.body
 
     const dbBook = new book ( bookData );
-    dbBook.save( (err, user )=>{
+    dbBook.save( (err, dbBook )=>{
         if( err ){ console.log(err)};
         console.log(dbBook);
     } );
@@ -37,10 +37,30 @@ app.post( '/api/addBook', async ( req, res ) => {
     res.send( 'book data received! ')
 });
 
+
+app.post( '/api/dropBook', async ( req, res ) => {
+    console.log( 'receving book id: ', req.body.id );
+    const id = req.body.id
+
+    const deleteBook = await book.deleteOne({"_id": `${id}`}, (err, data) => {
+        if(err){
+          return ('err');
+        }
+        console.log( `Data recieved from db: `, data)
+
+        // data = JSON.parse(data)
+
+        return (data);
+      });
+
+    res.send( 'book deleted ')
+});
+
+
 app.get( '/api/userBooks', async ( req, res ) => {
     console.log('received books request'  );
 
-    const findBooks =  await user.getCollection("book", (err, data) => {
+    const findBooks =  await book.find({}, (err, data) => {
         if(err){
           return ('err');
         }
