@@ -1,3 +1,22 @@
+# Description 
+
+This is a **React** and **MongoDB** application that utilizes **GoogleBooks API**. Users can search for a book and add it to their saved books. Saved books are input into the database so that the user can later access their saved books. Users can also remove books from their saved list. 
+
+
+# DEMO 
+![GoogleBooks Demo](assets/demo.gif)
+
+## Installation
+
+* Ensure that Node and npm are installed on your computer to run this application. 
+
+## Functionality 
+
+* The user can: 
+    * Search for a book by the title 
+    * Save a book 
+    * Remove a book from list of saved books 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
